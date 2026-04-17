@@ -1,0 +1,27 @@
+risk_thresholds:
+  monitor_only: 0.40
+  low_intervention: 0.55
+  high_risk: 0.70
+
+classification_threshold: 0.45
+
+intervention_policy:
+  payment_holiday_cooldown_weeks: 26
+  max_interventions_per_4_weeks: 2
+  min_salary_for_rm_call: 30000
+  min_salary_for_premium_rm_call: 50000
+
+compliance:
+  max_sms_chars: 160
+  max_email_chars: 500
+  aggressive_words:
+    - overdue
+    - defaulted
+    - legal action
+    - lawsuit
+    - CIBIL
+    - credit bureau
+    - collection agency
+    - debt
+    - delinquent
+    - court

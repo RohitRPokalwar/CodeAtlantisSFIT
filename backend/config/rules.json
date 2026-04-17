@@ -1,0 +1,74 @@
+[
+  {
+    "id": 1,
+    "name": "Salary credited 5+ days late",
+    "feature": "salary_delay_days",
+    "threshold": 29,
+    "maxThreshold": 30,
+    "weight": 0.85,
+    "enabled": true
+  },
+  {
+    "id": 2,
+    "name": "Savings balance drops \u2265 20% WoW",
+    "feature": "savings_wow_delta_pct",
+    "threshold": 20,
+    "maxThreshold": 100,
+    "weight": 0.8,
+    "enabled": true
+  },
+  {
+    "id": 3,
+    "name": "UPI to lending apps \u2265 3 per week",
+    "feature": "lending_upi_count_7d",
+    "threshold": 3,
+    "maxThreshold": 10,
+    "weight": 0.75,
+    "enabled": true
+  },
+  {
+    "id": 4,
+    "name": "Utility payment \u2265 7 days after due date",
+    "feature": "utility_payment_delay_days",
+    "threshold": 7,
+    "maxThreshold": 30,
+    "weight": 0.7,
+    "enabled": true
+  },
+  {
+    "id": 5,
+    "name": "Discretionary spend drops \u2265 40%",
+    "feature": "discretionary_spend_7d",
+    "threshold": 40,
+    "maxThreshold": 100,
+    "weight": 0.65,
+    "enabled": true
+  },
+  {
+    "id": 6,
+    "name": "ATM withdrawals \u2265 5 in past 7 days",
+    "feature": "atm_withdrawal_count_7d",
+    "threshold": 5,
+    "maxThreshold": 20,
+    "weight": 0.6,
+    "enabled": true
+  },
+  {
+    "id": 7,
+    "name": "Failed auto-debit \u2265 1 in past 7 days",
+    "feature": "failed_autodebit_count",
+    "threshold": 1,
+    "maxThreshold": 5,
+    "weight": 0.9,
+    "enabled": true
+  },
+  {
+    "id": 8,
+    "name": "Gambling spend > \u20b9500 in 7 days",
+    "feature": "gambling_spend_7d",
+    "threshold": 500,
+    "maxThreshold": 5000,
+    "weight": 0.55,
+    "enabled": true
+  }
+]

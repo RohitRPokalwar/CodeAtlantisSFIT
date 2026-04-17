@@ -1,0 +1,102 @@
+lightgbm:
+  boosting_type: dart
+  objective: binary
+  metric: auc
+  learning_rate: 0.05
+  num_leaves: 63
+  max_depth: 7
+  min_child_samples: 20
+  feature_fraction: 0.8
+  bagging_fraction: 0.8
+  bagging_freq: 5
+  lambda_l1: 0.1
+  lambda_l2: 0.1
+  is_unbalance: true
+  n_estimators: 500
+  random_state: 42
+  n_jobs: -1
+
+xgboost:
+  objective: binary:logistic
+  eval_metric: auc
+  max_depth: 5
+  learning_rate: 0.06
+  subsample: 0.85
+  colsample_bytree: 0.85
+  n_estimators: 450
+  reg_lambda: 1.0
+  random_state: 42
+  n_jobs: -1
+
+lstm:
+  seq_len: 8
+  hidden_size: 64
+  num_layers: 1
+  dropout: 0.25
+  epochs: 12
+  batch_size: 512
+  lr: 0.001
+  weight_decay: 0.0001
+  pos_weight: 3.0
+
+features:
+  # Behavioral Risk Agent (per requirement: use LightGBM)
+  # Trained on weekly_behavior + transaction aggregates joined during training.
+  tabular:
+    - salary_delay_days
+    - savings_wow_delta_pct
+    - atm_withdrawal_count_7d
+    - atm_withdrawal_amount_7d
+    - discretionary_spend_7d
+    - lending_upi_count_7d
+    - lending_upi_amount_7d
+    - failed_autodebit_count
+    - utility_payment_delay_days
+    - gambling_spend_7d
+    - credit_utilization
+    - net_cashflow_7d
+    - stress_level
+    # transaction aggregates (computed from transactions.csv in training)
+    - tx_debit_amount_7d
+    - tx_credit_amount_7d
+    - tx_debit_count_7d
+    - tx_failed_count_7d
+    - tx_upi_lending_amount_7d
+
+  # LSTM uses only weekly_behavior (time series).
+  sequence:
+    - salary_delay_days
+    - savings_wow_delta_pct
+    - atm_withdrawal_count_7d
+    - atm_withdrawal_amount_7d
+    - discretionary_spend_7d
+    - lending_upi_count_7d
+    - lending_upi_amount_7d
+    - failed_autodebit_count
+    - utility_payment_delay_days
+    - gambling_spend_7d
+    - credit_utilization
+    - net_cashflow_7d
+    - stress_level
+
+  # XGBoost uses customers + salary + payments (financial strength).
+  financial:
+    - age
+    - monthly_salary
+    - credit_score
+    - loan_amount
+    - emi_amount
+    - credit_limit
+    - savings_balance_initial
+    - account_balance_current
+    - account_open_days
+    - loan_count
+    - salary_mean
+    - salary_std
+    - salary_max_delay_days
+    - salary_bonus_sum
+    - pay_late_rate
+    - pay_mean_days_late
+    - pay_missed_rate
+    - pay_penalty_rate
+    - pay_outstanding_ratio
